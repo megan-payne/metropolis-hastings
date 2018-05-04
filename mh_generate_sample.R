@@ -49,14 +49,15 @@ tuning.5 <- tuning_x(0.5)
 tuning_3 <- tuning_x(3)
 tuning_10 <- tuning_x(10)
 
-set.seed(140)   # for reproducibility 
-df.5 <- tuning.5(51000)
-set.seed(140)
-df.3 <- tuning_3(51000)
-set.seed(140)
-df.10 <- tuning_10(51000)
+list.sample <- list()
+
+set.seed(140)   # for reproducibility.
+
+# Generate sampled values
+list.sample[[1]] <- tuning.5(51000)
+list.sample[[2]] <- tuning_3(51000)
+list.sample[[3]] <- tuning_10(51000)
+
 
 # save these to .rds for shiny to use. 
-saveRDS(df.5, file="shiny/df_5.rds")
-saveRDS(df.3, file="shiny/df_3.rds")
-saveRDS(df.10, file="shiny/df_10.rds")
+saveRDS(list.sample, file="metropolis-hastings/list_sample.rds")
